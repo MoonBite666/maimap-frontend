@@ -13,34 +13,7 @@ import SearchBar from '@/components/SearchBar.vue'
   </div>
 </template>
 
-<script>
-export default {
-  data() {
-    return {
-      searchQuery: '',
-    };
-  },
-  methods: {
-    search() {
-      console.log('Searching for: ' + this.searchQuery);
-    },
-    getLocation() {
-      if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(
-            (position) => {
-              this.searchQuery = `Latitude: ${position.coords.latitude}, Longitude: ${position.coords.longitude}`;
-            },
-            (error) => {
-              console.error('Error occurred while getting location: ', error);
-            }
-        );
-      } else {
-        console.error('Geolocation is not supported by this browser.');
-      }
-    },
-  },
-};
-</script>
+
 
 <style scoped>
 #app {
