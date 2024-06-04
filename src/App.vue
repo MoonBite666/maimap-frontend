@@ -1,14 +1,14 @@
+<script setup>
+import Logo from '@/components/Logo.vue'
+import SearchBar from '@/components/SearchBar.vue'
+</script>
+
 <template>
   <div id="app">
     <div class="center-container">
-      <div class="logo">
-        <h1>MaiMap</h1>
-      </div>
-      <div class="search">
-        <input type="text" v-model="searchQuery" placeholder="Search..." />
-        <button @click="search">查询</button>
-        <button @click="getLocation">获取位置</button>
-      </div>
+      <Logo />
+      <SearchBar />
+
     </div>
   </div>
 </template>
@@ -57,11 +57,5 @@ export default {
   width: 100%;
 }
 
-.logo {
-  margin-bottom: 40px;
-}
 
-.search input {
-  margin-right: 10px;
-}
 </style>
