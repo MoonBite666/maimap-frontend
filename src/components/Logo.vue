@@ -4,7 +4,7 @@
 
 <template>
   <div class="logo">
-    <h1>MaiMap</h1>
+    <h1 class="antialiased text-4xl">MaiMap</h1>
   </div>
 </template>
 
