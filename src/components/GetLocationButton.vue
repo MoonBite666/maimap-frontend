@@ -13,7 +13,18 @@ export default {
       if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(
             (position) => {
-              this.$emit('location-received', `Latitude: ${position.coords.latitude}, Longitude: ${position.coords.longitude}`);
+              fetch(`http://localhost:8080/rgc?lat=${position.coords.latitude}&lng=${position.coords.longitude}`)
+                  .then(response => {
+                    console.log(response);
+                    return response.json();
+                  })
+                  .then(data => {
+                    console.log(data);
+                    this.$emit('location-received', data.result.formatted_address);
+                  })
+                  .catch(error => {
+                    console.error('Error occurred while getting location: ', error);
+                  });
             },
             (error) => {
               console.error('Error occurred while getting location: ', error);
