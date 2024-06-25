@@ -24,6 +24,7 @@ export default {
     return {
       searchQuery: '',
       suggestions: [],
+      getSuggestionsTimeout: null,
     };
   },
   methods: {
@@ -32,8 +33,11 @@ export default {
       this.searchQuery = location;
     },
     getSuggestions() {
-      console.log('Getting suggestions for: ' + this.searchQuery);
+      clearTimeout(this.getSuggestionsTimeout);
+      this.getSuggestionsTimeout = setTimeout(() => {
+        console.log('Getting suggestions for: ' + this.searchQuery);
         this.suggestions = ["test1","test2","test3"]
+      }, 500);
     },
   },
   watch: {

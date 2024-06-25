@@ -20,7 +20,12 @@ export default {
                   })
                   .then(data => {
                     console.log(data);
-                    this.$emit('location-received', data.result.formatted_address);
+                    localStorage.setItem('location', data.result.formatted_addresses.recommend);
+                    localStorage.setItem('lat', data.result.ad_info.location.lat);
+                    localStorage.setItem('lng', data.result.ad_info.location.lng);
+                    localStorage.setItem('province', data.result.address_component.province);
+                    localStorage.setItem('city', data.result.address_component.city);
+                    this.$emit('location-received', data.result.formatted_addresses.recommend);
                   })
                   .catch(error => {
                     console.error('Error occurred while getting location: ', error);
